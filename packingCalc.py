@@ -39,17 +39,19 @@ class PackingListCalculator:
         self.shirts_to_pack = tk.Label(master, text="")
         self.shirts_to_pack.grid(row=6, column=1)
 
+    
+
     def calculate_items(self):
         try:
-            pants = int(self.pants.get())
+            pants = int(self.pants.get()) 
             shirts = int(self.shirts.get())
             duration = int(self.duration.get())
             total_items = pants + shirts + (2 * duration)
             self.total_items.configure(text=str(total_items))
             pants_to_pack = pants if duration < 7 else pants + 1
             shirts_to_pack = shirts if duration < 14 else shirts + 2
-            self.pants_to_pack.configure(text=str(pants_to_pack))
-            self.shirts_to_pack.configure(text=str(shirts_to_pack))
+            self.pants_to_pack.configure(text=str(pants_to_pack * duration))
+            self.shirts_to_pack.configure(text=str(shirts_to_pack * duration))
             self.write_to_file(pants_to_pack, shirts_to_pack)
         except ValueError:
             self.total_items.configure(text="Invalid input")
