@@ -2,6 +2,7 @@ import tkinter as tk
 
 class PackingListCalculator:
 
+    #main method for the list object
     def __init__(self, master):
         self.master = master
         self.master.title("Packing List Calculator")
@@ -39,8 +40,10 @@ class PackingListCalculator:
         self.shirts_to_pack = tk.Label(master, text="")
         self.shirts_to_pack.grid(row=6, column=1)
 
-    
 
+
+    
+    #preform the calucaltion for the tems abd semd tghem tio tghte gui
     def calculate_items(self):
         try:
             pants = int(self.pants.get()) 
@@ -56,11 +59,13 @@ class PackingListCalculator:
         except ValueError:
             self.total_items.configure(text="Invalid input")
 
+    #write to csv file for future use
     def write_to_file(self, pants_to_pack, shirts_to_pack):
         with open("packing_list.txt", "w") as f:
             f.write("Pants to pack: {}\n".format(pants_to_pack))
             f.write("Shirts to pack: {}\n".format(shirts_to_pack))
 
+#bruh yk what this if for on fortnite
 if __name__ == "__main__":
     root = tk.Tk()
     app = PackingListCalculator(root)
