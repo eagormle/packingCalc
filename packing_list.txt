@@ -1,2 +1,2 @@
 Pants to pack: 1
-Shirts to pack: 1
+Shirts to pack: 12
