@@ -69,15 +69,15 @@ class PackingListCalculator:
     #preform the calucaltion for the tems abd semd tghem tio tghte gui
     def calculate_items(self):
         try:
-            pants = 1
-            shirts = 1
-            socks = 1
+            pants_to_pack = 1
+            shirts_to_pack = 1
+            socks_to_pack = 1
             duration = int(self.duration.get())
-            pants_to_pack = pants if duration < 7 else pants + 1
-            shirts_to_pack = shirts if duration < 14 else shirts + 2
-            socks_to_pack = socks if duration < 14 else socks + 2
-            self.pants_to_pack.configure(text=str(round(pants_to_pack * duration / 2)))
-            self.shirts_to_pack.configure(text=str(shirts_to_pack * duration))
+            # pants_to_pack = pants if duration < 7 else pants + 1
+            # shirts_to_pack = shirts if duration < 14 else shirts + 2
+            # socks_to_pack = socks if duration < 14 else socks + 2
+            self.pants_to_pack.configure(text=str(round((pants_to_pack * duration) * 1.5)))
+            self.shirts_to_pack.configure(text=str(round((shirts_to_pack * duration) * 1.2)))
             self.socks_to_pack.configure(text=str(socks_to_pack * duration))
 
             # update the items label with the current list of items
@@ -92,7 +92,7 @@ class PackingListCalculator:
         with open("packing_list.txt", "w") as f:
             f.write("Pants to pack: {}\n".format(pants_to_pack))
             f.write("Shirts to pack: {}\n".format(shirts_to_pack))
-            f.write("Socks to pack: {}\n".format(socks_to_pack))
+            f.write("Pairs of socks to pack: {}\n".format(socks_to_pack))
             f.write("Items to pack: {}\n".format(", ".join(items_to_pack)))
 
 #bruh yk what this if for on fortnite
