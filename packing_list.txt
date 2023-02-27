@@ -1,2 +1,4 @@
-Pants to pack: 1
-Shirts to pack: 1
+Pants to pack: 2
+Shirts to pack: 3
+Socks to pack: 3
+Items to pack: test,  tst,  test
