@@ -35,8 +35,14 @@ class PackingListCalculator:
         self.socks_to_pack = tk.Label(master, text="")
         self.socks_to_pack.grid(row=8, column=1)
 
-        self.label9 = tk.Label(master, text="Items to pack:")
+        self.label9 = tk.Label(master, text="Undergarmets to pack:")
         self.label9.grid(row=9, column=0, sticky="w")
+        self.under_to_pack = tk.Label(master, text="")
+        self.under_to_pack.grid(row=8, column=1)
+
+
+        self.label10 = tk.Label(master, text="Items to pack:")
+        self.label10.grid(row=10, column=0, sticky="w")
         self.items_to_pack_label = tk.Label(master, text="")
         self.items_to_pack_label.grid(row=9, column=1, sticky="w")
 
@@ -72,6 +78,7 @@ class PackingListCalculator:
             pants_to_pack = 1
             shirts_to_pack = 1
             socks_to_pack = 1
+            under_to_pack = 1
             duration = int(self.duration.get())
             # pants_to_pack = pants if duration < 7 else pants + 1
             # shirts_to_pack = shirts if duration < 14 else shirts + 2
@@ -79,20 +86,23 @@ class PackingListCalculator:
             self.pants_to_pack.configure(text=str(round((pants_to_pack * duration) * 1.5)))
             self.shirts_to_pack.configure(text=str(round((shirts_to_pack * duration) * 1.2)))
             self.socks_to_pack.configure(text=str(socks_to_pack * duration))
+            self.under_to_pack.configure(text=str(round((under_to_pack * duration) * 1.2)))
+
 
             # update the items label with the current list of items
             self.items_to_pack_label.configure(text=", ".join(self.items_to_pack))
 
-            self.write_to_file(pants_to_pack, shirts_to_pack, socks_to_pack, self.items_to_pack)
+            self.write_to_file(pants_to_pack, shirts_to_pack, socks_to_pack, under_to_pack, self.items_to_pack)
         except ValueError:
             self.total_items.configure(text="Invalid input")
 
     #write to csv file for future use
-    def write_to_file(self, pants_to_pack, shirts_to_pack, socks_to_pack, items_to_pack):
+    def write_to_file(self, pants_to_pack, shirts_to_pack, socks_to_pack, items_to_pack, under_to_pack):
         with open("packing_list.txt", "w") as f:
             f.write("Pants to pack: {}\n".format(pants_to_pack))
             f.write("Shirts to pack: {}\n".format(shirts_to_pack))
             f.write("Pairs of socks to pack: {}\n".format(socks_to_pack))
+            f.write("Underwear to pack: {}\n".format(under_to_pack))
             f.write("Items to pack: {}\n".format(", ".join(items_to_pack)))
 
 #bruh yk what this if for on fortnite

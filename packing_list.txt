@@ -1,4 +1,4 @@
 Pants to pack: 1
 Shirts to pack: 1
 Pairs of socks to pack: 1
-Items to pack: 
+Underwear to pack: []
