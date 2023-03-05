@@ -9,8 +9,8 @@ class PackingListCalculator:
         self.master.title("Packing List Calculator")
         self.items_to_pack = []
 
-        self.label4 = tk.Label(master, text="Duration of trip (in days):")
-        self.label4.grid(row=3, column=0, sticky="w")
+        self.label1 = tk.Label(master, text="Duration of trip (in days):")
+        self.label1.grid(row=3, column=0, sticky="w")
         self.duration = tk.Entry(master)
         self.duration.grid(row=3, column=1)
 
@@ -20,31 +20,31 @@ class PackingListCalculator:
         self.add_button = tk.Button(master, text="Add Items to Pack", command=self.open_input_window)
         self.add_button.grid(row=4, column=1)
 
-        self.label6 = tk.Label(master, text="Pants to pack:")
-        self.label6.grid(row=6, column=0, sticky="w")
+        self.label2 = tk.Label(master, text="Pants to pack:")
+        self.label2.grid(row=6, column=0, sticky="w")
         self.pants_to_pack = tk.Label(master, text="")
         self.pants_to_pack.grid(row=6, column=1)
 
-        self.label7 = tk.Label(master, text="Shirts to pack:")
-        self.label7.grid(row=7, column=0, sticky="w")
+        self.label3 = tk.Label(master, text="Shirts to pack:")
+        self.label3.grid(row=7, column=0, sticky="w")
         self.shirts_to_pack = tk.Label(master, text="")
         self.shirts_to_pack.grid(row=7, column=1)
 
-        self.label8 = tk.Label(master, text="Socks to pack:")
-        self.label8.grid(row=8, column=0, sticky="w")
+        self.label4 = tk.Label(master, text="Socks to pack:")
+        self.label4.grid(row=8, column=0, sticky="w")
         self.socks_to_pack = tk.Label(master, text="")
         self.socks_to_pack.grid(row=8, column=1)
 
-        self.label9 = tk.Label(master, text="Undergarmets to pack:")
-        self.label9.grid(row=9, column=0, sticky="w")
+        self.label5 = tk.Label(master, text="Undergarmets to pack:")
+        self.label5.grid(row=9, column=0, sticky="w")
         self.under_to_pack = tk.Label(master, text="")
-        self.under_to_pack.grid(row=8, column=1)
+        self.under_to_pack.grid(row=9, column=1)
 
 
-        self.label10 = tk.Label(master, text="Items to pack:")
-        self.label10.grid(row=10, column=0, sticky="w")
+        self.label6 = tk.Label(master, text="Items to pack:")
+        self.label6.grid(row=10, column=0, sticky="w")
         self.items_to_pack_label = tk.Label(master, text="")
-        self.items_to_pack_label.grid(row=9, column=1, sticky="w")
+        self.items_to_pack_label.grid(row=10, column=1, sticky="w")
 
     # method to open new window for user input
     def open_input_window(self):
@@ -80,24 +80,20 @@ class PackingListCalculator:
             socks_to_pack = 1
             under_to_pack = 1
             duration = int(self.duration.get())
-            # pants_to_pack = pants if duration < 7 else pants + 1
-            # shirts_to_pack = shirts if duration < 14 else shirts + 2
-            # socks_to_pack = socks if duration < 14 else socks + 2
             self.pants_to_pack.configure(text=str(round((pants_to_pack * duration) * 1.5)))
             self.shirts_to_pack.configure(text=str(round((shirts_to_pack * duration) * 1.2)))
             self.socks_to_pack.configure(text=str(socks_to_pack * duration))
-            self.under_to_pack.configure(text=str(round((under_to_pack * duration) * 1.2)))
-
+            self.under_to_pack.configure(text=str(round((under_to_pack * duration))))
 
             # update the items label with the current list of items
             self.items_to_pack_label.configure(text=", ".join(self.items_to_pack))
 
-            self.write_to_file(pants_to_pack, shirts_to_pack, socks_to_pack, under_to_pack, self.items_to_pack)
+            self.write_to_file(self.pants_to_pack['text'], self.shirts_to_pack['text'], self.socks_to_pack['text'], self.under_to_pack['text'], self.items_to_pack)
         except ValueError:
             self.total_items.configure(text="Invalid input")
 
     #write to csv file for future use
-    def write_to_file(self, pants_to_pack, shirts_to_pack, socks_to_pack, items_to_pack, under_to_pack):
+    def write_to_file(self, pants_to_pack, shirts_to_pack, socks_to_pack, under_to_pack, items_to_pack):
         with open("packing_list.txt", "w") as f:
             f.write("Pants to pack: {}\n".format(pants_to_pack))
             f.write("Shirts to pack: {}\n".format(shirts_to_pack))
@@ -110,4 +106,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = PackingListCalculator(root)
     root.mainloop()
-#    git error

@@ -1,4 +1,5 @@
-Pants to pack: 1
-Shirts to pack: 1
-Pairs of socks to pack: 1
-Underwear to pack: []
+Pants to pack: 15
+Shirts to pack: 12
+Pairs of socks to pack: 10
+Underwear to pack: 10
+Items to pack: cheese
