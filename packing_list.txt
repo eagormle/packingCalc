@@ -1,5 +1,5 @@
 Pants to pack: 15
 Shirts to pack: 12
-Pairs of socks to pack: 10
-Underwear to pack: 10
-Items to pack: inhaler
+Pairs of socks to pack: 15
+Underwear to pack: 17
+Items to pack: 

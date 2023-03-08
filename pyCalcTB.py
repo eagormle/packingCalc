@@ -82,8 +82,8 @@ class PackingListCalculator:
             duration = int(self.duration.get())
             self.pants_to_pack.configure(text=str(round((pants_to_pack * duration) * 1.5)))
             self.shirts_to_pack.configure(text=str(round((shirts_to_pack * duration) * 1.2)))
-            self.socks_to_pack.configure(text=str(socks_to_pack * duration))
-            self.under_to_pack.configure(text=str(round((under_to_pack * duration))))
+            self.socks_to_pack.configure(text=str(round((socks_to_pack * duration) * 1.5)))
+            self.under_to_pack.configure(text=str(round((under_to_pack * duration) * 1.7)))
 
             # update the items label with the current list of items
             self.items_to_pack_label.configure(text=", ".join(self.items_to_pack))
@@ -92,7 +92,7 @@ class PackingListCalculator:
         except ValueError:
             self.total_items.configure(text="Invalid input")
 
-    #write to csv file for future use
+    #write to txt file for future use
     def write_to_file(self, pants_to_pack, shirts_to_pack, socks_to_pack, under_to_pack, items_to_pack):
         with open("packing_list.txt", "w") as f:
             f.write("Pants to pack: {}\n".format(pants_to_pack))
