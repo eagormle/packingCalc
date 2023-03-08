@@ -1,5 +1,5 @@
-Pants to pack: 15
-Shirts to pack: 12
-Pairs of socks to pack: 15
-Underwear to pack: 17
-Items to pack: 
+Pants/Shorts to pack: 5
+Shirts to pack: 7
+Pairs of socks to pack: 8
+Underwear to pack: 8
+Items to pack: Advil,  inhaler,  psp
