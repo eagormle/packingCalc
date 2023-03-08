@@ -2,4 +2,4 @@ Pants to pack: 15
 Shirts to pack: 12
 Pairs of socks to pack: 10
 Underwear to pack: 10
-Items to pack: cheese
+Items to pack: inhaler
