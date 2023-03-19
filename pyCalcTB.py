@@ -48,6 +48,9 @@ class PackingListCalculator:
         self.items_to_pack_label = tk.Label(master, text="")
         self.items_to_pack_label.grid(row=11, column=1, sticky="w")
 
+        self.quit_button = tk.Button(master, text="Quit", command=master.destroy)
+        self.quit_button.grid(row=12, column=0, columnspan=2, sticky="ew") #I like how its called ew lol
+
     # method to open new window for user input
     def open_input_window(self):
         input_window = tk.Toplevel(self.master)
