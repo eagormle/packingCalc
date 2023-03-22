@@ -1,6 +1,7 @@
 import tkinter as tk
 from pyCalcTB import PackingListCalculator
 from tkinter import ttk
+from elePack import eleList
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -45,6 +46,11 @@ class Application(tk.Frame):
     def run_calculator(self):
         root = tk.Tk()
         app = PackingListCalculator(root)
+        root.mainloop()
+
+    def runEle(self):
+        root = tk.Tk()
+        eleapp = eleList(root)
         root.mainloop()
 
 root = tk.Tk()

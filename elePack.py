@@ -1,48 +1,38 @@
 import tkinter as tk
 
-class PackingListCalculator:
+class eleList:
 
     #main method for the list object
     def __init__(self, master):
         self.master = master
-        self.master.title("Packing List Calculator")
+        self.master.title("Electronic Packing List Calculator")
         self.items_to_pack = []
 
-        self.label1 = tk.Label(master, text="Duration of trip (in days):")
+        self.label1 = tk.Label(master, text="How manny devices will you bring: ")
         self.label1.grid(row=3, column=0, sticky="w")
         self.duration = tk.Entry(master)
         self.duration.grid(row=3, column=1)
 
-        self.washer_dryer_var = tk.BooleanVar()
-        self.washer_dryer_checkbox = tk.Checkbutton(master, text="Will you have access to a washer/dryer?", variable=self.washer_dryer_var)
-        self.washer_dryer_checkbox.grid(row=4, column=0, sticky="w")
+        self.adaptor_dryer_var = tk.BooleanVar()
+        self.adaptor_dryer_checkbox = tk.Checkbutton(master, text="Will you need an international adaptor? ", variable=self.adaptor_dryer_var)
+        self.adaptor_dryer_checkbox.grid(row=4, column=0, sticky="w")
 
 
         self.calculate_button = tk.Button(master, text="Calculate", command=self.calculate_items)
         self.calculate_button.grid(row=5, column=0)
 
-        self.add_button = tk.Button(master, text="Add Items to Pack", command=self.open_input_window)
+        self.add_button = tk.Button(master, text="Add Gear to Pack", command=self.open_input_window)
         self.add_button.grid(row=5, column=1)
 
-        self.label2 = tk.Label(master, text="Pants/Shorts to pack:")
+        self.label2 = tk.Label(master, text="Cables to pack:")
         self.label2.grid(row=7, column=0, sticky="w")
-        self.pants_to_pack = tk.Label(master, text="")
-        self.pants_to_pack.grid(row=7, column=1)
+        self.cables_to_pack = tk.Label(master, text="")
+        self.cables_to_pack.grid(row=7, column=1)
 
-        self.label3 = tk.Label(master, text="Shirts to pack:")
+        self.label3 = tk.Label(master, text="Wall outlets to pack:")
         self.label3.grid(row=8, column=0, sticky="w")
-        self.shirts_to_pack = tk.Label(master, text="")
-        self.shirts_to_pack.grid(row=8, column=1)
-
-        self.label4 = tk.Label(master, text="Socks to pack:")
-        self.label4.grid(row=9, column=0, sticky="w")
-        self.socks_to_pack = tk.Label(master, text="")
-        self.socks_to_pack.grid(row=9, column=1)
-
-        self.label5 = tk.Label(master, text="Undergarmets to pack:")
-        self.label5.grid(row=10, column=0, sticky="w")
-        self.under_to_pack = tk.Label(master, text="")
-        self.under_to_pack.grid(row=10, column=1)
+        self.outlets_to_pack = tk.Label(master, text="")
+        self.outlets_to_pack.grid(row=8, column=1)
 
         self.label6 = tk.Label(master, text="Items to pack:")
         self.label6.grid(row=11, column=0, sticky="w")
@@ -81,25 +71,16 @@ class PackingListCalculator:
     #preform the calucaltion for the items and send them to the GUI
     def calculate_items(self):
         try:
-            pants_to_pack = 1
-            shirts_to_pack = 1
-            socks_to_pack = 1
-            under_to_pack = 1
+            cables_to_pack = 1
+            outlets_to_pack = 1
             duration = int(self.duration.get())
             if self.washer_dryer_var.get():
-                pants_to_pack *= 0.35
-                shirts_to_pack *= 0.6
-                socks_to_pack *= 0.5
-                under_to_pack *= 0.5
-            self.pants_to_pack.configure(text=str(round((pants_to_pack * duration) * 1.5)))
-            self.shirts_to_pack.configure(text=str(round((shirts_to_pack * duration) * 1.2)))
-            self.socks_to_pack.configure(text=str(round((socks_to_pack * duration) * 1.5)))
-            self.under_to_pack.configure(text=str(round((under_to_pack * duration) * 1.7)))
+                adapters_to_pack = 1
 
             # update the items label with the current list of items
             self.items_to_pack_label.configure(text=", ".join(self.items_to_pack))
 
-            self.write_to_file(self.pants_to_pack['text'], self.shirts_to_pack['text'], self.socks_to_pack['text'], self.under_to_pack['text'], self.items_to_pack)
+            self.write_to_file(self.cables_to_pack['text'], self.outlets_to_pack['text'], self.items_to_pack)
         except ValueError:
             self.total_items.configure(text="Invalid input")
 
@@ -114,5 +95,5 @@ class PackingListCalculator:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = PackingListCalculator(root)
+    app = eleList(root)
     root.mainloop()
